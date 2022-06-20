@@ -15,43 +15,47 @@
 <body>
     <div class="page">
         <header class="header">
-            <nav class="navbar navbar-expand-md navbar-light ">
-                <div class="container-fluid">
-                    <a href="#" class="header__logo"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <nav class="header__nav">
 
-                    <div class="collapse navbar-collapse header__links" id="navbarsExample04">
-                        <ul class="navbar-nav mr-auto mb-2 mb-md-0 header__link">
-                            <li class="nav-item">
-                                <a style="color: #fff;" class="nav-link" href="#benefits">наши преимущества</a>
+                <a href="#" class="header__logo"></a>
+                <div class="header__menu">
+                    <div class="menu__icon">
+                        <span></span>
+                    </div>
+                    <div class="menu__body">
+                        <ul class="menu__lists">
+                            <li class="menu__list">
+                                <a data-goto=".benefits" class="menu__link" href="#">наши
+                                    преимущества</a>
                             </li>
-                            <li class="nav-item">
-                                <a style="color: #fff;" class="nav-link" href="#about-us">о нас</a>
+                            <li class="menu__list">
+                                <a data-goto=".about-us" class="menu__link" href="#">о нас</a>
                             </li>
-                            <li class="nav-item">
-                                <a style="color: #fff;" class="nav-link" href="#gallery">галерея</a>
+                            <li class="menu__list">
+                                <a data-goto=".gallery" class="menu__link" href="#">галерея</a>
                             </li>
-                            <li class="nav-item">
-                                <a style="color: #fff;" class="nav-link" href="#contacts">контакты</a>
+                            <li class="menu__list">
+                                <a data-goto=".contacts" class="menu__link" href="#">контакты</a>
                             </li>
+
                         </ul>
-                        <div class="header__contacts">
-                            <p class="header__phone">
-                                +7 (233) 222-22-22
-                            </p>
-                            <p class="header__work">08:00 - 22:00, без&nbsp;выходных
-                            </p>
-                        </div>
-                        <form id="btn" action="#" class="header__btn">
-                            <button class="header__button btn">Заказать звонок</button>
-                        </form>
 
                     </div>
+
+
+
+
                 </div>
+                <div class="header__contacts">
+                    <p class="header__phone">
+                        +7 (233) 222-22-22
+                    </p>
+                    <p class="header__work">08:00 - 22:00, без&nbsp;выходных
+                    </p>
+                </div>
+                <form id="btn" action="#" class="header__btn">
+                    <button class="header__button btn">Заказать звонок</button>
+                </form>
             </nav>
         </header>
         <main class="content">
@@ -229,84 +233,8 @@
         <p class="recall">Мы вам скоро перезвоним</p>
 
     </div>
+    <script src="./js.js"></script>
     <script src="./bootstrap/bootstrap.js"></script>
-    <script>
-        //action="./tgsendm.php"
-        const form = document.querySelector('div.edit-form')
-        const button = document.querySelector('button.btn')
-        const buttonContacts = document.querySelector('button.contacts__button')
-        const closeForm = document.querySelector('button.edit-form__close');
-        const formWrapper = document.querySelector('form.edit-form__wrapper')
-
-        button.addEventListener('click', function () {
-            event.preventDefault();
-            form.classList.add('edit-form_active');
-        });
-
-        buttonContacts.addEventListener('click', function () {
-            event.preventDefault();
-            form.classList.add('edit-form_active');
-        });
-
-
-
-        closeForm.addEventListener('click', function close() {
-            form.classList.remove('edit-form_active');
-            formWrapper.reset();
-        })
-
-
-        let lastScroll = 0;
-        const defaultOffset = 200;
-        const header = document.querySelector('header.header');
-
-        const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
-        const containHide = () => header.classList.contains('_active');
-
-        window.addEventListener('scroll', () => {
-
-
-
-
-            if (scrollPosition() > lastScroll && !containHide()) {
-
-                header.classList.add('_active')
-            }
-
-            else if (scrollPosition() < 1 && containHide()) {
-
-                header.classList.remove('_active')
-            }
-            lastScroll = scrollPosition();
-        })
-
-        const recall = document.querySelector('p.recall');
-        const recallButton = document.querySelector('button.edit-form__btn');
-
-        recallButton.addEventListener('click', function () {
-            form.classList.remove('edit-form_active');
-        })
-
-
-        recallButton.addEventListener('click', function () {
-            recall.classList.add('recall_active')
-            formWrapper.reset();
-            window.addEventListener('scroll', () => {
-                recall.classList.remove('recall_active')
-            })
-        })
-        const navbarToggler = document.querySelector('button.navbar-toggler')
-
-
-
-        navbarToggler.addEventListener('click', function () {
-            header.classList.add('_active')
-        })
-
-
-
-
-    </script>
 </body>
 
 </html>
